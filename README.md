@@ -27,3 +27,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+light blue-
+#e8f0fe;
+
+blue-
+#1a73e8;

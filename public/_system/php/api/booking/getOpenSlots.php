@@ -20,54 +20,83 @@ if (isset($date) && isset($duration))
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         # Perform SQL Query
         //$sql = "SELECT b.booking_id, b.booking_date, b.booking_time, p.package_minutes FROM bookings b INNER JOIN packages p ON b.booking_date = '$date' AND b.package_id = p.package_id ORDER BY b.booking_time ASC";
-        $sql = "SELECT booking_id, booking_date, booking_time, package FROM bookings WHERE booking_date = '$date' ORDER BY booking_time ASC";
+        
+        $sql = "SELECT config_value FROM config WHERE config_key = 'max_allowed_bookings'";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $allowed_max_bookings = $stmt->fetchAll()[0][0];
+        // echo $allowed_max_bookings."<br>";
+        
+        $sql = "SELECT booking_id, booking_date, booking_time, package FROM bookings WHERE booking_date = '$date'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         # Fetch Result
         $result = $stmt->fetchAll();
-        // print_r($result);
-        $start = strtotime("8:00"); #opening time
+        # print_r($result);
+
+        date_default_timezone_set("Asia/Singapore"); # Set timezone to Singapore. Time there matches Philippines time
+        //echo date_default_timezone_get()."<br>";
+
+        if(((8 < date('H')) && (date('H') < 20)))
+        {
+            $hour_now = strtotime(date('H').":00"); # Get current hour
+            # echo date('H:i', $hour_now)."<br>";
+            # If minutes == 00-29, start with XX:30 and if 31-59 start with next hour
+            $start = (date('i') < 30) ? strtotime("+30 minutes", $hour_now) : strtotime("+1 hour", $hour_now);
+        }
+        else
+        {
+            $start = strtotime("8:00");
+        }
+        # echo date('H:i', $start)."<br>";
+
         $stop = strtotime("20:00"); #closing time
         $step = "+30 minutes"; #preferred interval
-        $reserved = $result; 
+        # $reserved = $result;
         
         $availables = array(); //open slots to be pushed here
         
-        $c = 0;
-        $current = $start; #initialize current time
-        $end_of_current = strtotime($duration, $current); #initialize and compute end time of current
-        $reserved_start = strtotime($reserved[$c]['booking_time']);
-        $reserved_duration = "+".(json_decode($reserved[$c]['package'])->package_minutes)." minutes";
-        $end_of_reserved = strtotime($reserved_duration, $reserved_start);
+        // echo "Hour Now: ".date("H:i", $hour_now)."<br>";
+        // echo "Start: ".date("H:i", $start)."<br>";
+        // echo "Stop: ".date("H:i", $stop)."<br>";
+        // echo "Step: ".$step."<br>";
+        // " Weird booking: ".(json_decode($row[1]['package'])->package_minutes)."<br>";
+        //echo json_last_error()." ".json_last_error_msg()."<br>";
         
-
-
-        while ($current < $stop && strtotime($duration, $current) <= $stop)
-        {   
-            if($current >= $end_of_reserved && $c < sizeof($reserved) - 1)
+        for($current = $start, $end_of_current = strtotime($duration, $current);
+            $current < $stop && $end_of_current <= $stop;
+            $current = strtotime($step, $current), $end_of_current = strtotime($duration, $current))
+        {
+            //echo "-------------".date("H:i", $current)."-------------<br>";
+            $bookings_found = 0;
+            # Unfortunately, this part is not optimal and makes this whole php function slow
+            foreach($result as $row)
             {
-                //echo "<br>Past booking #".$reserved[$c]['booking_id']." @".date("H:i", $reserved_start)." - ".date("H:i", $end_of_reserved)."<br>";
-                $c = $c + 1;
-                $reserved_start = strtotime($reserved[$c]['booking_time']);
-                $reserved_duration = "+".(json_decode($reserved[$c]['package'])->package_minutes)." minutes";
+                # print_r($row);
+                $reserved_start = strtotime($row['booking_time']);
+                $reserved_duration = "+".(json_decode(str_replace("\n", '', $row['package']))->package_minutes)." minutes";
                 $end_of_reserved = strtotime($reserved_duration, $reserved_start);
+
+                // echo $row['booking_id']."<br>";
+                // echo date("H:i", $reserved_start)."<br>";
+                // echo $reserved_duration."<br>";
+                // echo date("H:i", $end_of_reserved)."<br>";
+
+                if(($current <= $reserved_start && $reserved_start < $end_of_current) || ($reserved_start <= $current && $current < $end_of_reserved))
+                {
+                    $bookings_found++;
+                    # echo "Found conflict<br>";
+                }
             }
-            if(($current < $reserved_start && $end_of_current <= $reserved_start) || ($current >= $end_of_reserved && $end_of_current > $end_of_reserved))
+            //echo "Bookings found:".$bookings_found.'<br>';
+            if($bookings_found < $allowed_max_bookings)
             {
                 $availables[] = date("H:i", $current);
-                //echo "current(" . date("H:i", $current) . ") >= eor(" . date("H:i", $end_of_reserved) . ") && eoc(" . date("H:i", $end_of_current) . ") > eor(" . date("H:i", $end_of_reserved);
-                //echo "<br>".date("H:i", $current)."<br>";
+                # echo date("H:i", $current).' added to availables<br>';
             }
-            else
-            {
-                //echo "<br>Conflict with booking #".$reserved[$c]['booking_id']." @".date("H:i", $reserved_start)." - ".date("H:i", $end_of_reserved)."<br>"; 
-            }
-            
-            
-            $current = strtotime($step, $current);
-            $end_of_current = strtotime($duration, $current);
+            //echo "-------------".date("H:i", $current)."-------------<br>";
         }
-
+        
         echo json_encode((object)[
             'success' => true,
             'data' => $availables

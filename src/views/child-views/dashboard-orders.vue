@@ -35,11 +35,16 @@
                     th Print Size
                     th Filename
                     th Price
+                    th Source
                 tbody
                   tr(v-for="order in JSON.parse(params.order_list)")
                     td {{order.addon.addon_description}}
                     td {{order.filename}}
                     td {{order.addon.addon_price}}
+                    td {{order.addon.addon_source}}
+                  tr
+                    td(colspan="3") Total Payment upon pickup
+                    td {{params.order_total_price}}
               
 </template>
 

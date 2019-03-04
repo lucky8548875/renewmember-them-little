@@ -11,8 +11,13 @@ div
 #backdrop
   background-color: rgba(0,0,0,0.2)
 #drawer
-  background-color: white  
-  border-right: 1px solid #eee
+	background-color: white
+	min-width: 15rem
+	border-right: 1px solid #eee
+// #drawer
+//   background-color: white
+// 	min-width: 15rem
+// 	border-right: 1px solid #eee
 </style>
 
 <script>

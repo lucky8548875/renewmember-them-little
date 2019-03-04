@@ -43,7 +43,7 @@
         transition(name="fade" mode="out-in")
           router-view
 
-      drawer.z-menu(:visible="false" alias="home-drawer" ref="dashboarddrawer").fixed.top.padding
+      drawer.z-menu(:visible="false" alias="dashboard-drawer" ref="dashboarddrawer").fixed.top.padding
         //- Sidebar Links
         ul.links.remove-list-style.flex.column
           each val, index in {'My Bookings':'/dashboard/bookings','My Orders':'/dashboard/orders'}

@@ -98,6 +98,7 @@ div
           div.padding.overflow-auto
             form(@submit.prevent="$store.dispatch('placeOrder',$event); visible=false")
               input(type="hidden" name="booking_id" :value="params.booking_id")
+              input(type="hidden" id="total" name="total" :value="$parent.getTotalPrice(params.booking_addons)")
               table.wide
                 tr(v-for="addon,index in $parent.catchParse(params.booking_addons)" v-if="addon.addon_type=='PRINT' && !((addon.addon_source=='PACKAGE' || addon.addon_source=='BOOKING') && params.booking_addons_isordered == 1)")
                   td
@@ -106,6 +107,7 @@ div
                     span ({{addon.addon_source == 'PACKAGE' ? 'Free from Package' : addon.addon_source == 'BOOKING' ? 'Addon' : 'P' + addon.addon_price }})
                   td
                     input(type="text" :addon="JSON.stringify(addon)" placeholder="Filename of Photo" style="padding-left: 1rem" :name="'addon' + index")
+                    
               br
               .flex
                 select(ref="selectedPrint")

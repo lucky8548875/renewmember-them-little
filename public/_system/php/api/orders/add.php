@@ -11,6 +11,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/_system/php/functions/checkToken.php';
 $order_list = $_POST['order_list'];
 $booking_id = $_POST['booking_id'];
 $account_id = $_POST['account_id'];
+$order_total_price = $_POST['order_total_price'];
 // $token = $_POST['token'];
 
 
@@ -24,14 +25,13 @@ if (isset($order_list) && isset($booking_id) && isset($account_id) && true) {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-        // !Todo : Fix account_id (currently fixed to 1) and booking_total_price
         # Perform SQL Query
-        $sql = "INSERT INTO orders (order_list, booking_id, account_id) VALUES ('$order_list','$booking_id','$account_id')";
+        $sql = "INSERT INTO orders (order_list, order_total_price, booking_id, account_id) VALUES ('$order_list','$order_total_price','$booking_id','$account_id')";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
         # Perform SQL Query
-        $sql = "UPDATE bookings SET booking_addons_isordered='1' WHERE booking_id=='$booking_id'";
+        $sql = "UPDATE bookings SET booking_addons_isordered='1' WHERE booking_id='$booking_id'";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 

@@ -977,6 +977,8 @@ export default new Vuex.Store({
       formData.append('order_list', JSON.stringify(order_list))
       formData.append('account_id', context.getters.userId)
       formData.append('booking_id', submitEvent.target.elements.booking_id.value)
+      formData.append('order_total_price', submitEvent.target.elements.total.value)
+      console.log('TOTAL PRICE : ' + submitEvent.target.elements.total.value)
       axios.post('/_system/php/api/orders/add.php', formData)
         .then(response => {
           console.log(response)

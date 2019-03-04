@@ -40,7 +40,7 @@ div
             table.wide
               tr
                 td Schedule
-                td {{params.booking_date}}
+                td {{params.booking_date}} | {{params.booking_time}}
               tr
                 td Status
                 td {{params.booking_status}}

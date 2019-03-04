@@ -42,16 +42,25 @@
       main.wide
         transition(name="fade" mode="out-in")
           router-view
+
+      drawer.z-menu(:visible="false" alias="home-drawer" ref="dashboarddrawer").fixed.top.padding
+        //- Sidebar Links
+        ul.links.remove-list-style.flex.column
+          each val, index in {'My Bookings':'/dashboard/bookings','My Orders':'/dashboard/orders'}
+              li
+                router-link.padding.inline-block(to=val :class="{'active': $route.path=='"+val+"'}")=index
       
 </template>
 
 <script>
 import AccountButton from '@/components/account-button.vue'
 import NotificationButton from '@/components/notification-button.vue'
+import Drawer from "@/components/reusable/drawer.vue";
 
 
 export default {
   components: {
+    'drawer': Drawer,
     'account-button': AccountButton,
     'notification-button': NotificationButton,
   },

@@ -157,7 +157,7 @@ export default {
 @import '../../assets/sass/helpers/responsive'
 
 .summary_container
-  padding: 2rem
+  padding: 2rem 10%
 
   p
     line-height: 1.25rem

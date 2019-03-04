@@ -25,7 +25,7 @@
     //- Services
     a(name="services")
     section.services
-      h1#services.services-section-title Services
+      h1#services.services-section-title(style="padding-top: 1rem") Services
       carousel(perPage=1 paginationColor="#cccccc" paginationActiveColor="#1a73e8")
         slide(v-for="category in $store.getters.categories")
           div.wide.grid

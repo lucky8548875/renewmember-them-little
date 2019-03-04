@@ -15,7 +15,7 @@
             fa(icon="times") 
     br
     .addon_buttons_container
-      button.margin-small(v-show="checkLimit(addon)" v-for="addon in $store.getters.addons" @click="addAddon(addon)")
+      button.margin-small(style="text-align: left;" v-show="checkLimit(addon)" v-for="addon in $store.getters.addons" @click="addAddon(addon)")
         fa(icon="plus")
         span.margin-left-small {{addon.addon_type}} - {{addon.addon_description}} (Php {{addon.addon_price}})
   .wide.flex.center-child.padding

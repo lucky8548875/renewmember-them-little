@@ -2,7 +2,7 @@
 #schedule
 	.calendar_container
 		calendar(ref="calendar")
-		div.slots_wrapper
+		div.slots_wrapper(style="flex-grow: 2")
 			h4.h4.margin Slots Available
 			div.slots_container.margin(v-if="slots.length > 0 && $store.state.booking.booking_date!='' ")
 				span(

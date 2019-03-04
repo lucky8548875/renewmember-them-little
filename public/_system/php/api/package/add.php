@@ -20,6 +20,7 @@ $category_id = $_POST['category_id'];
 if (isset($package_name) && isset($package_description) && isset($package_price) && isset($package_minutes) && isset($package_themes) && isset($package_active) && isset($category_id) && isset($package_inclusions) ) {
 
     $package_description = nl2br(htmlentities($package_description, ENT_QUOTES, 'UTF-8'));
+    $package_description = str_replace(array("\n", "\r"), '', $package_description);
 
 
     try {

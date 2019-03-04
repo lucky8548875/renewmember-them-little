@@ -3,7 +3,7 @@ div
   transition(name='fade')
     #backdrop.fixed-fill(@click="toggle" v-show="shown")
   transition(name='slide-right')
-    #drawer.fixed.high.left(v-show="shown")
+    #drawer.fixed.high.left.top(v-show="shown")
       slot
 </template>
 

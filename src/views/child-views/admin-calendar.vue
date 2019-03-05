@@ -12,7 +12,7 @@
     //- Contents
     
     day-calendar(v-if="activecalendar=='day'")
-      .booking.padding(v-for="booking in bookingsToday" :style="{'grid-row-start': booking.start,'grid-row-end': booking.end}")
+      .booking.padding(v-for="booking in bookingsToday" :style="{'grid-row-start': booking.start,'grid-row-end': booking.end}" @click="$refs.booking.show(booking)")
         h2 {{booking.booking.account_name}}
         h4 {{parseJson(booking.booking.package).package_name}}
         h4 Status: {{booking.booking.booking_status}}
@@ -20,12 +20,26 @@
     div(v-if="activecalendar=='week'")
       div(v-html=`$store.getters.weekBookings.replace(new RegExp('"','g'),'')`)
 
+    modal(ref="booking" inline-template)
+      div
+        transition(name='fade')
+          #backdrop.fixed-fill(@click="toggle" v-show="visible")
+        transition(name='fade')
+          #modal(v-show="visible").card.fixed-center.flex.column.five-large.seven-medium.twelve-small.max-high
+            div.flex.justify-space-between.align-center.wide
+              h2.padding Booking Details
+              a.padding(@click="toggle"): fa(icon='times')
+            hr
+            div.padding.overflow-auto
+            span {{params}}
+
 </template>
 
 <script>
 import DayCalendar from '@/components/day-calendar.vue'
 import Switcher from '@/components/reusable/switcher.vue'
 import axios from 'axios'
+import Modal from "@/components/reusable/modal.vue";
 
 export default {
   mounted(){
@@ -34,7 +48,8 @@ export default {
   },
   components: {
     'day-calendar': DayCalendar,
-    'switcher': Switcher
+    'switcher': Switcher,
+    modal: Modal,
   },
   data() {
     return {

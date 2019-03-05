@@ -24,7 +24,7 @@ div(v-if='$store.getters.isAuthenticated')
             div.padding.overflow-auto
               h4 {{params.created}}
               br
-              span {{params.notification_message}}
+              span(v-html="params.notification_message")
 
 
 </template>

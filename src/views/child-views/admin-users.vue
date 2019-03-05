@@ -48,6 +48,7 @@
   .switches
     background-color: #eee
     border-radius: 3rem
+    overflow: hidden
     display: inline-block
 </style>
 

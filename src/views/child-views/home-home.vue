@@ -11,7 +11,7 @@
           .photo-container.three
             div(style="background-image: url('/img/home/1.jpg')")
         h1.banner-text.start-2.span-10.start-7-medium-plus.span-5-medium-plus.text-center-small.margin-bottom Remember Them Little
-        h2.banner-sub-text.start-2.span-10.start-7-medium-plus.span-5-medium-plus.text-center-small.margin-bottom ...for they will only be little once!
+        h2.banner-sub-text.start-2.span-10.start-7-medium-plus.span-5-medium-plus.text-center-small.margin-bottom because they will only be little once!
         router-link.home-button.start-3.span-8.start-7-medium-plus.span-4-medium.span-2-large.primary.text-center.flex.align-center.justify-space-between(to="/book" v-if="$store.getters.isAuthenticated")
           span.flex-grow.margin-left Book Now
           span.center-child(style="background-color: #ffffff33; flex-basis: 2rem; height: 2rem; border-radius: 50%")
@@ -132,6 +132,7 @@
     font-size: 4vw
 .banner-sub-text
   font-size: 1.2rem
+  font-family: cursive
   font-weight: lighter
   margin-bottom: 0
   @include medium-plus

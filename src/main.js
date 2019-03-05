@@ -8,8 +8,8 @@ import './registerServiceWorker'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faFacebook, faFacebookMessenger } from '@fortawesome/free-brands-svg-icons'
-import { faPlus,faSyncAlt, faSignInAlt, faPowerOff, faBars, faAngleDown, faAngleRight,faAngleLeft, faArrowRight, faBell, faArrowLeft, faHome, faBook, faShoppingCart, faTimes, faCalendarAlt, faChartPie, faSignOutAlt, faMapMarked, faPhone, faMobile, faSearch, faCalendar, faFont} from '@fortawesome/free-solid-svg-icons'
-library.add(faPlus,faSyncAlt, faSignInAlt, faPowerOff, faBars, faAngleDown, faAngleRight, faAngleLeft, faArrowRight, faBell, faArrowLeft, faHome, faBook, faShoppingCart, faTimes, faCalendarAlt, faChartPie, faSignOutAlt, faFacebook, faMapMarked, faFacebookMessenger, faMobile, faSearch, faCalendar, faFont)
+import { faPlus,faSyncAlt, faSignInAlt, faPowerOff, faBars, faAngleDown, faAngleRight,faAngleLeft, faArrowRight, faBell, faArrowLeft, faHome, faBook, faShoppingCart, faTimes, faCalendarAlt, faChartPie, faSignOutAlt, faMapMarked, faPhone, faMobile, faSearch, faCalendar, faFont, faUser} from '@fortawesome/free-solid-svg-icons'
+library.add(faPlus,faSyncAlt, faSignInAlt, faPowerOff, faBars, faAngleDown, faAngleRight, faAngleLeft, faArrowRight, faBell, faArrowLeft, faHome, faBook, faShoppingCart, faTimes, faCalendarAlt, faChartPie, faSignOutAlt, faFacebook, faMapMarked, faFacebookMessenger, faMobile, faSearch, faCalendar, faFont,faUser)
 Vue.component('fa', FontAwesomeIcon)
 
 // ClazyLoad

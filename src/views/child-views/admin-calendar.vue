@@ -31,8 +31,34 @@
               a.padding(@click="toggle"): fa(icon='times')
             hr
             div.padding.overflow-auto
-            span {{params}}
-
+              h3(style="color: #ccc") booking# {{params.booking.booking_id}} | {{params.booking.booking_status}}
+              h3(style="margin: 1rem 0rem")
+                fa(icon="user")
+                span(style="margin-left: 0.5rem") {{params.booking.account_name}}
+              fieldset(style="padding: 0 1rem")
+                legend.text-center(style="padding: 0 1rem") Booking Schedule
+                table.wide
+                  tr
+                    td Date:
+                    td {{params.booking.booking_date}}
+                  tr
+                    td Time:
+                    td {{params.booking.booking_time}}
+              br
+              fieldset(style="padding: 0 1rem")
+                legend.text-center(style="padding: 0 1rem") Package Details
+                table.wide
+                  tr
+                    td Package Name
+                    td {{ $parent.parseJson(params.booking.package).package_name }}
+                  tr
+                    td Package Description
+                    td(v-html="$parent.parseJson(params.booking.package).package_description")
+              br
+              fieldset(style="padding: 0 1rem")
+                legend.text-center(style="padding: 0 1rem") Themes
+                .grid.grid-auto
+                  img(v-for="themeid in $parent.parseJson(params.booking.booking_themes)" :src="$store.getters.themes.find(theme => theme.theme_id == themeid).theme_image" style="width: 100%; border-radius: 0.5rem")
 </template>
 
 <script>
@@ -45,6 +71,7 @@ export default {
   mounted(){
     this.loadBookingsToday();
     this.$store.dispatch('loadWeekBookings')
+    this.$store.dispatch('loadThemes')
   },
   components: {
     'day-calendar': DayCalendar,

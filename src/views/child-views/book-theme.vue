@@ -30,7 +30,7 @@
   display: grid
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr))
   gap: 0.5rem
-  margin-bottom: 4rem
+  margin-bottom: 10rem
 
   @include large
     width: 80%

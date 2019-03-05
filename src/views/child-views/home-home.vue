@@ -29,7 +29,7 @@
       carousel(perPage=1 paginationColor="#cccccc" paginationActiveColor="#1a73e8")
         slide(v-for="category in $store.getters.categories")
           div.wide.grid
-            div.announcement-photo.start-2.span-10.span-6-medium-plus(:style='{backgroundPosition: "center", backgroundSize: "cover", backgroundColor: "#fff",backgroundImage: "url(" + category.category_image + ")"}')
+            div.announcement-photo.start-2.span-10.span-6-medium-plus(:style='{backgroundPosition: "center", backgroundSize: "cover", backgroundColor: "#fff",backgroundImage: `url("${category.category_image}")`}')
             div.start-2.span-10.start-9-medium-plus.span-3-medium-plus.padding
               h2.text-left {{ category.category_name }}
               br

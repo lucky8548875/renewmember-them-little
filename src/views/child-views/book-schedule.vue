@@ -11,7 +11,7 @@
 					:class="{'active':$store.getters.booking.booking_time==slot}"
 					v-for="slot in slots") {{slot}}
 	.wide.flex.center-child.padding
-		router-link.continue-button(to='/book/summary') Continue
+		router-link.continue-button(to='/book/summary' v-show="$store.getters.booking.booking_time!=''") Continue
 	
 </template>
 

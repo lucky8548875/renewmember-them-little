@@ -176,6 +176,9 @@ export default {
       padding: 0 1rem
       position: relative
       top: 1.5rem
+      text-align: center
+      color: cornflowerblue
+      font-weight: bold
 
     table
       width: 100%

@@ -174,7 +174,7 @@ export default {
       formData.append('package_minutes', elements.package_minutes.value) 
       formData.append('package_themes', elements.package_themes.value) 
       formData.append('package_active', elements.package_active.checked ? 1 : 0)
-      formData.append('package_promo', elements.package_active.checked ? 1 : 0)
+      formData.append('package_promo', elements.package_promo.checked ? 1 : 0)
       formData.append('package_inclusions', JSON.stringify(this.selectedAddons))
       console.log(JSON.stringify(this.selectedAddons))
       this.$store.dispatch('addPackage', formData)
@@ -199,7 +199,7 @@ export default {
       this.$store.dispatch('editPackage', formData)
       
     },
-  }
+  }``
 }
   
 </script>

@@ -6,7 +6,7 @@
     .package(v-for="packagex in $store.getters.packages.filter(packagex => packagex.category_id==$store.getters.selectedCategoryId && packagex.package_active)" :style="{'border': (packagex.package_promo ? '2px solid #ffb712': '0')}")
       h3(style="font-weight: bold").package_name.margin-bottom {{packagex.package_name}}
       h4(style="font-weight: bold").package_price.margin-bottom Php {{packagex.package_price}}
-      p.package_description.margin-bottom(v-html="packagex.package_description.replace(new RegExp('\\n', 'g'), '<br>')")
+      p.package_description.margin-bottom(style="line-height: 1.5rem" v-html="packagex.package_description.replace(new RegExp('\\n', 'g'), '<br>')")
       a(class="choose_package" @click="choosePackage(packagex)").text-center Choose Package
       div.promonote(v-if="packagex.package_promo") Promo!
   

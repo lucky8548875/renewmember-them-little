@@ -199,7 +199,7 @@ export default {
       this.$store.dispatch('editPackage', formData)
       
     },
-  }``
+  }
 }
   
 </script>

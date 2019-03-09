@@ -1,0 +1,42 @@
+$small: 0.5rem
+$regular: 1rem
+$medium: 1.5rem
+$large: 2rem
+$xlarge: 2.5rem
+
+$sizes: (-auto: auto, -none: 0,-small: $small, '': $regular, -medium: $medium, -large: $large, -xlarge: $xlarge)
+
+@each $size, $value in $sizes
+    @if($value!=auto)
+        .padding#{$size}
+            padding: $value
+        .padding-left#{$size}
+            padding-left: $value
+        .padding-right#{$size}
+            padding-right: $value
+        .padding-top#{$size}
+            padding-top: $value
+        .padding-bottom#{$size}
+            padding-bottom: $value
+        .padding-x#{$size}
+            padding-left: $value
+            padding-right: $value
+        .padding-y#{$size}
+            padding-top: $value
+            padding-bottom: $value
+    .margin#{$size}
+        margin: $value
+    .margin-left#{$size}
+        margin-left: $value
+    .margin-right#{$size}
+        margin-right: $value
+    .margin-top#{$size}
+        margin-top: $value
+    .margin-bottom#{$size}
+        margin-bottom: $value
+    .margin-x#{$size}
+        margin-left: $value
+        margin-right: $value
+    .margin-y#{$size}
+        margin-top: $value
+        margin-bottom: $value

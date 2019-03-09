@@ -1,0 +1,64 @@
+$positions: (static,relative,absolute,fixed,sticky)
+
+@each $position in $positions
+    .#{$position}
+        position: #{$position}
+
+$locations: (top,bottom,left,right)
+@each $location in $locations
+    .#{$location}
+        #{$location}: 0
+
+.text-center
+    text-align: center
+.text-left
+    text-align: left
+.text-right
+    text-align: right
+.text-justify
+    text-align: justify
+
+@include small
+    .text-center-small
+        text-align: center
+    .text-left-small
+        text-align: left
+    .text-right-small
+        text-align: right
+    .text-justify-small
+        text-align: justify
+
+@include medium
+    .text-center-medium
+        text-align: center
+    .text-left-medium
+        text-align: left
+    .text-right-medium
+        text-align: right
+    .text-justify-medium
+        text-align: justify
+
+@include large
+    .text-center-large
+        text-align: center
+    .text-left-large
+        text-align: left
+    .text-right-large
+        text-align: right
+    .text-justify-large
+        text-align: justify
+
+@include medium-plus
+    .text-center-medium-plus
+        text-align: center
+    .text-left-medium-plus
+        text-align: left
+    .text-right-medium-plus
+        text-align: right
+    .text-justify-medium-plus
+        text-align: justify
+
+.float-left
+    float: left
+.float-right
+    float: right

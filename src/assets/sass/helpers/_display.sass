@@ -1,0 +1,21 @@
+$displays: (none, block, inline-block, inline, flex, inline-flex, grid, inline-grid)
+
+@each $display in $displays
+    .#{$display}
+        display: #{$display}
+
+@include small
+    .hide-small,.show-medium,.show-large,.show-medium-plus
+        display: none !important
+
+@include medium
+    .hide-medium,.show-small,.show-large
+        display: none !important
+
+@include large
+    .hide-large,.show-small,.show-medium
+        display: none !important
+
+@include medium-plus
+    .hide-medium-plus,.show-small
+        display: none !important

@@ -1,0 +1,79 @@
+.fade-enter-active, .fade-leave-active,.fade-delayed-enter-active, .fade-delayed-leave-active,
+  transition: opacity .2s
+
+.fade-enter, .fade-leave-to, .fade-delayed-enter, .fade-delayed-leave-to /* .fade-leave-active below version 2.1.8 */ 
+  opacity: 0
+
+.fade-delayed-enter-active,
+  transition-delay: 0.3s
+
+.fade-delayed-leave-active,
+  transition-delay: 0.3s
+
+.slide-right-enter-active, .slide-right-leave-active 
+  transition: transform 0.2s
+
+.slide-right-enter, .slide-right-leave-to /* .slide-right-leave-active below version 2.1.8 */ 
+  transform: translateX(-100%)
+
+.slide-down-enter-active, .slide-down-leave-active 
+  transition: transform 0.2s
+
+.slide-down-enter, .slide-down-leave-to /* .slide-down-leave-active below version 2.1.8 */ 
+  transform: translateY(-100%)
+
+.slide-left-enter-active, .slide-left-leave-active 
+  transition: transform 0.3s
+
+.slide-left-enter
+  transform: translateX(100%)
+  
+.slide-left-leave-to /* .slide-down-leave-active below version 2.1.8 */ 
+  transform: translateX(-100%)
+
+
+.center-scale-enter-active, .center-scale-leave-active 
+  transition: transform 0.2s, opacity 0.2s
+.center-scale-enter, .center-scale-leave-to /* .center-scale-leave-active below version 2.1.8 */ 
+  transform: translate(-50%, -50%) scale(0.85) 
+  opacity: 0
+
+
+
+.switch-up-enter-active,.switch-up-delayed-enter-active,
+  transition: transform 0.3s, opacity 0.3s
+  transition-timing-function: ease-out
+  transition-delay: 0.2s
+
+.switch-up-leave-active ,.switch-up-delayed-leave-active 
+  transition: transform 0.2s, opacity 0.2s
+  transition-timing-function: ease-in
+
+.switch-up-delayed-leave-active 
+  transition-delay: 0.1s
+
+.switch-up-enter,.switch-up-delayed-enter, /* .center-scale-leave-active below version 2.1.8 */ 
+  opacity: 0
+  transform: translateY(100%)
+
+.switch-up-leave-to,.switch-up-delayed-leave-to
+  opacity: 0
+  transform: translateY(-100%)
+
+@keyframes placeHolderShimmer
+  0%
+    background-position: -468px 0
+  100%
+    background-position: 468px 0
+
+.animated-background
+  animation-duration: 1.25s
+  animation-fill-mode: forwards
+  animation-iteration-count: infinite
+  animation-name: placeHolderShimmer
+  animation-timing-function: linear
+  background: darkgray
+  background: linear-gradient(to right, #dddddd 10%, #eaeaea 18%, #dddddd 33%)
+  background-size: 800px 104px
+  height: 100px
+  position: relative

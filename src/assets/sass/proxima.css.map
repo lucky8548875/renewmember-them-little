@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,UAAU;EACN,WAAW,EAAE,SAAS;EACtB,GAAG,EAAE,k1BAAk1B,CAAC,eAAe;EACv2B,WAAW,EAAE,MAAM;EACnB,UAAU,EAAE,MAAM;;;AACtB,UAAU;EACN,WAAW,EAAE,cAAc;EAC3B,GAAG,EAAE,s5tDAAs5tD,CAAC,eAAe;EAC36tD,WAAW,EAAE,GAAG;EAChB,UAAU,EAAE,MAAM;;;AACtB,UAAU;EACN,WAAW,EAAE,cAAc;EAC3B,GAAG,EAAE,svqDAAsvqD,CAAC,eAAe;EAC3wqD,WAAW,EAAE,GAAG;EAChB,UAAU,EAAE,MAAM",
+    "sources": [
+        "proxima.sass"
+    ],
+    "names": [],
+    "file": "proxima.css"
+}

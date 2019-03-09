@@ -1,0 +1,17 @@
+$flex-directions: (row,row-reverse,column,column-reverse)
+@each $direction in $flex-directions
+    .#{$direction}
+        flex-direction: #{$direction}
+
+$justify-contents: (flex-start, flex-end, center, space-around, space-between)
+@each $justification in $justify-contents
+    .justify-#{$justification}
+        justify-content: #{$justification}
+
+$align-items: (flex-start, flex-end, stretch, center, space-around, space-between)
+@each $alignment in $align-items
+    .align-#{$alignment}
+        align-items: #{$alignment}
+
+.flex-grow
+    flex-grow: 1

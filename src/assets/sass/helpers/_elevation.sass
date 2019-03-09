@@ -1,0 +1,4 @@
+$levels: (z-under: -5, z-body: 0, z-under-nav-menu:3, z-nav: 5,z-blocker: 10,z-menu: 15, z-context: 20, z-dialog: 25)
+@each $level,$value in $levels
+    .#{$level}
+        z-index: #{$value}

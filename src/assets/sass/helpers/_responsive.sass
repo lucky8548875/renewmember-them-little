@@ -1,0 +1,15 @@
+@mixin small() // small only
+    @media only screen and (max-width: 599px)
+        @content;
+
+@mixin medium() // medium only
+    @media only screen and (min-width: 600px) and (max-width: 1024px)
+        @content;
+
+@mixin large() // large
+    @media only screen and (min-width: 1025px)
+        @content;
+
+@mixin medium-plus() // medium + large
+    @media only screen and (min-width: 600px)
+        @content;

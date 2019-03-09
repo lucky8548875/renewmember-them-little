@@ -1,0 +1,115 @@
+// // Customization Layer
+$color-primary: #1a73e8
+$color-light-primary: #e8f0fe
+
+*, *:after, *:before
+    font-family: 'Proxima Soft', sans-serif
+    color: #333
+
+a
+    cursor: pointer
+    font-weight: bold
+    color: #aaa
+    transition: color 0.2s
+    > *, svg > path
+        color: #aaa
+        transition: color 0.2s, fill 0.2s
+        fill: #aaa
+
+a:hover
+    color: #333
+    > *, svg > path
+        color: #333
+        transition: color 0.2s, fill 0.2s
+        fill: #333
+
+
+a.active
+    font-weight: bold
+    color: #333
+    > *, svg > path
+        color: #333
+        fill: #333
+.special
+    border-radius: 2rem
+.special.active
+    background-color: $color-light-primary
+    color: $color-primary
+    > *, svg > path
+        color: $color-primary
+        fill: $color-primary
+// a   
+//     border-radius: 2rem
+//     cursor: pointer
+//     color: #777
+//     transition: 0.2s color
+//     -webkit-tap-highlight-color: transparent !important
+//     span
+//         transition: 0.2s color
+//         color: #777
+//     path
+//         transition: 0.2s fill
+//         fill: #777
+//     &:hover
+//         color: #333
+//         background-color: #f7f7f7
+//         span
+//             color: #333
+//         path
+//             fill: #333
+//     &.active
+//         background-color: #f7f7f7
+//         color: #333
+//         background-color: cornflowerblue
+//         color: white
+//         font-weight: bold
+//         span
+//             color: #333
+//             color: white
+//         path
+//             fill: #333
+//             fill: white
+
+button
+    border-radius: 0.25rem
+    cursor: pointer
+    background-color: #eaeaea
+    font-size: 0.92rem !important
+    font-weight: bold
+    text-transform: uppercase
+
+    &:hover
+        background-color: #cacaca
+    &:active
+        background-color: #aaaaaa
+
+
+
+// h1,h2,h3,h4,h5,h6
+//     color: #777
+
+table
+    border-spacing: 0
+
+    td,th
+        color: #333333
+        text-align: left
+        padding: 1rem 1rem 1rem 0
+        border-bottom: 1px solid #f0f0f0
+
+    td:last-child,th:last-child
+        padding-right: 0
+
+input,textarea,select
+    border-radius: 0.25rem
+    border: 2px solid #eeeeee
+    background-color: #fdfdfd
+    padding: 0.75rem
+    margin-bottom: 0.5rem
+
+* + input,textarea,select
+    margin-top: 0.5rem
+
+fieldset
+    border: 1px solid #ccc
+

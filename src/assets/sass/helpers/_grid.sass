@@ -1,0 +1,79 @@
+.grid
+    display: grid
+    gap: 1rem
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+    // Syntax: .grid-auto
+    &-auto
+        display: grid
+        grid-template-columns: repeat( auto-fit, minmax(0,1fr))
+    // Syntax: .grid-3-small
+    @for $i from 1 to 13
+        &-#{$i}
+            display: grid
+            grid-template-columns: repeat( auto-fit, calc(100% / #{$i}) )
+        &-#{$i}-small
+            @include small
+                display: grid
+                grid-template-columns: repeat( auto-fit, calc(100% / #{$i}) )
+        &-#{$i}-medium
+            @include medium
+                display: grid
+                grid-template-columns: repeat( auto-fit, calc(100% / #{$i}) )
+        &-#{$i}-large
+            @include large
+                display: grid
+                grid-template-columns: repeat( auto-fit, calc(100% / #{$i}) )
+        &-#{$i}-medium-plus
+            @include medium-plus
+                display: grid
+                grid-template-columns: repeat( auto-fit, calc(100% / #{$i}) )
+
+//syntax: span-2 start-3
+
+@for $i from 2 to 13
+    .span-#{$i}
+        grid-column-end: span #{$i}
+
+@for $i from 1 to 13
+    .start-#{$i}
+        grid-column-start: #{$i}
+
+// syntax: start-2-small
+@for $i from 1 to 13
+    @include small
+        .start-#{$i}-small
+            grid-column-start: #{$i}
+        .span-#{$i}-small
+            grid-column-end: span #{$i}
+    @include medium
+        .start-#{$i}-medium
+            grid-column-start: #{$i}
+        .span-#{$i}-medium
+            grid-column-end: span #{$i}
+    @include large
+        .start-#{$i}-large
+            grid-column-start: #{$i}
+        .span-#{$i}-large
+            grid-column-end: span #{$i}
+    @include medium-plus
+        .start-#{$i}-medium-plus
+            grid-column-start: #{$i}
+        .span-#{$i}-medium-plus
+            grid-column-end: span #{$i}
+
+.gapless
+    grid-gap: 0
+    
+
+$small: 0.5rem
+$regular: 1rem
+$medium: 1.5rem
+$large: 2rem
+$xlarge: 2.5rem
+
+$sizes: (-small: $small, '': $regular, -medium: $medium, -large: $large, -xlarge: $xlarge)
+
+// Syntax: .gap-medium
+@each $size, $value in $sizes
+    .gap#{$size}
+        grid-gap: $value

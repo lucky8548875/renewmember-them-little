@@ -36,13 +36,24 @@ if (isset($date) && isset($duration))
 
         date_default_timezone_set("Asia/Singapore"); # Set timezone to Singapore. Time there matches Philippines time
         //echo date_default_timezone_get()."<br>";
-
-        if(((8 < date('H')) && (date('H') < 20)))
+        //((8 < date('H')) && (date('H') < 20))
+        if ($date == date("Y-m-d"))
         {
-            $hour_now = strtotime(date('H').":00"); # Get current hour
-            # echo date('H:i', $hour_now)."<br>";
-            # If minutes == 00-29, start with XX:30 and if 31-59 start with next hour
-            $start = (date('i') < 30) ? strtotime("+30 minutes", $hour_now) : strtotime("+1 hour", $hour_now);
+            if ((8 < date('H')) && (date('H') < 20))
+            {
+                $hour_now = strtotime(date('H').":00"); # Get current hour
+                # echo date('H:i', $hour_now)."<br>";
+                # If minutes == 00-29, start with XX:30 and if 31-59 start with next hour
+                $start = (date('i') < 30) ? strtotime("+30 minutes", $hour_now) : strtotime("+1 hour", $hour_now);
+            }
+            elseif (date('H') < 8)
+            {
+                $start = strtotime("8:00");
+            }
+            else
+            {
+                $start = strtotime(date('H:i'));
+            }
         }
         else
         {

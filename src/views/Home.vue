@@ -4,7 +4,7 @@
   
     //- Navigation bar
     transition(name="slide-down" appear)
-      nav.z-nav.sticky.wide.flex.justify-space-between.padding-x-small(style="min-height: 5rem")
+      nav.z-nav.wide.flex.absolute.top.justify-space-between.padding-x-small(style="min-height: 5rem")
         //- Left Side
         div.flex
           //- Hamburger Menu
@@ -18,7 +18,7 @@
           ul.links.remove-list-style.show-large.flex.center-child-child
             each val, index in {'Home':'#home','Services':'#services','Gallery':'#gallery','FAQ':'#faq','Contact':'#contact'}
               li
-                a.padding(href=val :class="{'active': $route.path=='"+val+"'}")=index
+                a.light-font.padding(href=val :class="{'active': $route.path=='"+val+"'}")=index
         //- Right Side
         div.flex.center-child
           notification-button(v-if="$store.getters.userId!=null")
@@ -59,3 +59,8 @@ export default {
   }
 };
 </script>
+
+<style lang="sass" scoped>
+.light-font
+  font-weight: lighter !important
+</style>

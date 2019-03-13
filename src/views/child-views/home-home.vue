@@ -273,7 +273,6 @@ footer
 
 <script>
 import FaqsMachine from '@/components/faqs-machine.vue'
-import Slidestrip from '@/components/slidestrip.vue'
 import Gallery from '@/views/child-views/gallery.vue'
 export default {
 	data() {
@@ -393,7 +392,6 @@ export default {
   components: {
 
     'faqs-machine': FaqsMachine,
-    'slidestrip': Slidestrip,
     'gallery': Gallery
 
   },

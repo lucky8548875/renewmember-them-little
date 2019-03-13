@@ -53,6 +53,7 @@ export default {
 
 
 <style lang="sass" scoped>
+@import '../assets/sass/helpers/responsive'
 #notification-button
   position: relative
 
@@ -89,6 +90,11 @@ export default {
   max-width: 100%
   max-height: 70vh
   overflow-y: auto
+  @include small
+    position: fixed !important
+    left: 0 !important
+    top: 4rem !important
+    margin: 1rem !important
 #notification-button:focus #context, #context:focus, #context:hover
   display: flex
   position: absolute

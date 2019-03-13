@@ -1,5 +1,4 @@
 html, body {
-  background-color: white;
   scroll-behavior: smooth;
 }
 
@@ -2026,6 +2025,11 @@ a {
           flex-grow: 1;
 }
 
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .static {
   position: static;
 }
@@ -2526,8 +2530,8 @@ hr {
 }
 
 .animated-background {
-  -webkit-animation-duration: 1.25s;
-          animation-duration: 1.25s;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   -webkit-animation-iteration-count: infinite;
@@ -2537,9 +2541,9 @@ hr {
   -webkit-animation-timing-function: linear;
           animation-timing-function: linear;
   background: darkgray;
-  background: -webkit-gradient(linear, left top, right top, color-stop(10%, #dddddd), color-stop(18%, #eaeaea), color-stop(33%, #dddddd));
-  background: linear-gradient(to right, #dddddd 10%, #eaeaea 18%, #dddddd 33%);
-  background-size: 800px 104px;
+  background: -webkit-gradient(linear, left top, right top, color-stop(10%, #dddddd), color-stop(25%, #eaeaea), color-stop(40%, #dddddd));
+  background: linear-gradient(to right, #dddddd 10%, #eaeaea 25%, #dddddd 40%);
+  background-size: 2000px 104px;
   height: 100px;
   position: relative;
 }
@@ -2547,6 +2551,10 @@ hr {
 *, *:after, *:before {
   font-family: 'Proxima Soft', sans-serif;
   color: #333;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 a {

@@ -13,7 +13,7 @@ var router = new Router({
       children: [
         {
           path: '/',
-          component: () => import(/* webpackChunkName: "about" */ './views/child-views/home-home.vue')
+          component: () => import(/* webpackChunkName: "about" */ './views/child-views/home-home.1.vue')
         },
         {
           path: '/services',

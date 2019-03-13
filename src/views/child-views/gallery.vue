@@ -2,8 +2,10 @@
   <transition name="fade" appear>
 	<div
 		class="wrapper"
-		v-bind:style="{ 'background-position': wScroll + 'px center', 'background-image': 'url(' + backgroundImage +')'}"
+		v-bind:style="{ 'background-position': wScroll + 'px center'}"
+		
 	>
+		<!-- 'background-image': 'url(' + backgroundImage +')' -->
 		<div class="surroundContainer" ref="container" @scroll="scrollMoved()">
 			<div class="hPage">
 				<div class="boxContainer">
@@ -99,12 +101,13 @@ export default {
 <style scoped>
 .wrapper {
 	height: 100vh;
-	background-color: grey;
+	background-color: transparent;
 	background-size: auto, auto;
 	margin-left: 0px;
 	border-left-width: 0px;
 	padding-left: 0px;
 	position: relative;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.16'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
 .view {
@@ -156,6 +159,7 @@ svg > path {
 	border-radius: 10px;
 	justify-content: center;
 	overflow-y: auto;
+	overflow: visible;
 }
 
 .box {
@@ -168,12 +172,11 @@ svg > path {
 .box img {
 	width: 100%;
 	height: 100%;
-	box-shadow: 0px 3px 10px gray;
-	transition: box-shadow 0.3s, transform 0.3s;
+	box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
+	transition: transform 0.3s;
 }
 
 .box img:hover {
-	box-shadow: 0px 6px 20px #555;
 	transform: scale(1.4);
 }
 
@@ -184,10 +187,9 @@ svg > path {
 
 .surroundContainer {
 	/* width: 400%;
-    overflow: auto; */
+    
 	/* My own code */
-	overflow: hidden;
-
+	overflow: auto;
 	white-space: nowrap;
 	background-position: -400px center;
 }
